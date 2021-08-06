@@ -5,21 +5,23 @@ namespace FirstBankOfSuncoast
 {
     class Transaction
     {
-        public int WithdrawFromChecking { get; set; }
-        public int WithdrawFromSavings { get; set; }
-        public int DepositToChecking { get; set; }
-        public int DepositToSavings { get; set; }
-    }
+        public string AccountType { get; set; }
+        public string TransactionType { get; set; }
+        public int Amount { get; set; }
 
-    class TransactionDatebase
-    {
-        private List<Transaction> Transactions { get; set; } = new List<Transaction>();
+        public List<Transaction> Transactions { get; set; } = new List<Transaction>();
 
-        public void AddTransaction(Transaction newTransaction)
+        public void Deposit(Transaction newTransaction)
         {
             Transactions.Add(newTransaction);
         }
+        public void Withdraw(Transaction newTransaction)
+        {
+            Transactions.Add(newTransaction);
+        }
+
     }
+
     class Program
     {
         static int PromptForInteger(string prompt)
@@ -35,59 +37,65 @@ namespace FirstBankOfSuncoast
             else
             {
                 Console.WriteLine("Sorry, that isn't a valid input, I'm using 0 as your answer.");
+                Console.WriteLine();
                 return 0;
             }
         }
 
         static void Main(string[] args)
         {
-            var transactions = new TransactionDatebase();
+            var transactions = new Transaction();
 
             var keepGoing = true;
 
             while (keepGoing)
             {
-                Console.WriteLine("Would you like to:\n(W)ithdraw\n(D)eposit\n(Q)uit\n:");
+                Console.WriteLine("Would you like to:\n(W)ithdraw\n(D)eposit\n(Q)uit");
                 var menuOption = Console.ReadLine().ToUpper();
 
                 if (menuOption == "W")
                 {
+                    transactions.TransactionType = menuOption;
                     var transaction = new Transaction();
-                    Console.WriteLine("Which account would you like to withdraw from:\n(C)hecking\n(S)avings\n:");
+                    Console.WriteLine("Which account would you like to withdraw from:\n(C)hecking\n(S)avings");
                     var innerMenuOption = Console.ReadLine().ToUpper();
                     if (innerMenuOption == "C")
                     {
-                        transaction.WithdrawFromChecking = PromptForInteger("How much would you like to deposit to your checking? ");
-                        transactions.AddTransaction(transaction);
+                        transaction.AccountType = innerMenuOption;
+                        transaction.Amount = PromptForInteger("How much would you like withdraw from your checking? ");
+                        transactions.Withdraw(transaction);
                     }
                     else
-                        if (innerMenuOption == "S")
+                    if (innerMenuOption == "S")
                     {
-                        transaction.WithdrawFromSavings = PromptForInteger("How much would you like to deposit to your checking? ");
-                        transactions.AddTransaction(transaction);
+                        transaction.AccountType = innerMenuOption;
+                        transaction.Amount = PromptForInteger("How much would you like to withdraw from your checking? ");
+                        transactions.Withdraw(transaction);
                     }
                     else
                     {
                         Console.WriteLine("Invalid selection");
                     }
-
                 }
                 else
                 if (menuOption == "D")
                 {
+                    transactions.TransactionType = menuOption;
                     var transaction = new Transaction();
-                    Console.WriteLine("Which account would you like to deposit to:\n(C)hecking\n(S)avings\n:");
+                    Console.WriteLine("Which account would you like to deposit to:\n(C)hecking\n(S)avings");
                     var innerMenuOption = Console.ReadLine().ToUpper();
                     if (innerMenuOption == "C")
                     {
-                        transaction.DepositToChecking = PromptForInteger("How much would you like to deposit to your checking? ");
-                        transactions.AddTransaction(transaction);
+                        transaction.AccountType = innerMenuOption;
+                        transaction.Amount = PromptForInteger("How much would you like to deposit to your checking? ");
+                        transactions.Deposit(transaction);
                     }
                     else
                     if (innerMenuOption == "S")
                     {
-                        transaction.DepositToSavings = PromptForInteger("How much would you like to deposit to your checking? ");
-                        transactions.AddTransaction(transaction);
+                        transaction.AccountType = innerMenuOption;
+                        transaction.Amount = PromptForInteger("How much would you like to deposit to your checking? ");
+                        transactions.Deposit(transaction);
                     }
                     else
                     {
