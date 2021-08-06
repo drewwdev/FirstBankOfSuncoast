@@ -32,12 +32,17 @@ namespace FirstBankOfSuncoast
 
         static void Main(string[] args)
         {
-            var transactions = new Transaction();
+            var transactions = new List<Transaction>();
 
             var keepGoing = true;
 
             while (keepGoing)
             {
+                foreach (var transaction in transactions)
+                {
+                    Console.WriteLine(transaction);
+                }
+
                 Console.WriteLine("Would you like to:\n(W)ithdraw\n(D)eposit\n(Q)uit");
                 var menuOption = Console.ReadLine().ToUpper();
 
@@ -47,16 +52,18 @@ namespace FirstBankOfSuncoast
                     var innerMenuOption = Console.ReadLine().ToUpper();
                     if (innerMenuOption == "C")
                     {
-                        transactions.AccountType = innerMenuOption;
-                        transactions.Amount = PromptForInteger("How much would you like withdraw from your checking? ");
-                        transactions.TransactionType = menuOption;
+                        var transaction = new Transaction();
+                        transaction.AccountType = innerMenuOption;
+                        transaction.Amount = PromptForInteger("How much would you like withdraw from your checking? ");
+                        transaction.TransactionType = menuOption;
                     }
                     else
                     if (innerMenuOption == "S")
                     {
-                        transactions.AccountType = innerMenuOption;
-                        transactions.Amount = PromptForInteger("How much would you like to withdraw from your savings? ");
-                        transactions.TransactionType = menuOption;
+                        var transaction = new Transaction();
+                        transaction.AccountType = innerMenuOption;
+                        transaction.Amount = PromptForInteger("How much would you like to withdraw from your savings? ");
+                        transaction.TransactionType = menuOption;
                     }
                     else
                     {
@@ -70,16 +77,18 @@ namespace FirstBankOfSuncoast
                     var innerMenuOption = Console.ReadLine().ToUpper();
                     if (innerMenuOption == "C")
                     {
-                        transactions.AccountType = innerMenuOption;
-                        transactions.Amount = PromptForInteger("How much would you like to deposit to your checking? ");
-                        transactions.TransactionType = menuOption;
+                        var transaction = new Transaction();
+                        transaction.AccountType = innerMenuOption;
+                        transaction.Amount = PromptForInteger("How much would you like to deposit to your checking? ");
+                        transaction.TransactionType = menuOption;
                     }
                     else
                     if (innerMenuOption == "S")
                     {
-                        transactions.AccountType = innerMenuOption;
-                        transactions.Amount = PromptForInteger("How much would you like to deposit to your savings? ");
-                        transactions.TransactionType = menuOption;
+                        var transaction = new Transaction();
+                        transaction.AccountType = innerMenuOption;
+                        transaction.Amount = PromptForInteger("How much would you like to deposit to your savings? ");
+                        transaction.TransactionType = menuOption;
                     }
                     else
                     {
