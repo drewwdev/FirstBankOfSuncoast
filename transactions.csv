@@ -1,1 +1,3 @@
-AccountType,TransactionType,Amount
+Account,Type,Amount
+Checking,Deposit,200
+Checking,Deposit,200
