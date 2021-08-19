@@ -61,8 +61,8 @@ namespace FirstBankOfSuncoast
                     Console.WriteLine("Which account would you like to withdraw from:");
                     Console.WriteLine("[C]hecking");
                     Console.WriteLine("[S]avings");
-                    var checkingOrSavings = Console.ReadLine().ToUpper();
-                    if (checkingOrSavings == "C")
+                    var userInput = Console.ReadLine().ToUpper();
+                    if (userInput == "C")
                     {
                         Console.WriteLine();
                         transaction.Amount = PromptForInteger("How much would you like to withdraw from your checking? ");
@@ -80,7 +80,7 @@ namespace FirstBankOfSuncoast
                         }
                     }
                     else
-                    if (checkingOrSavings == "S")
+                    if (userInput == "S")
                     {
                         Console.WriteLine();
                         transaction.Amount = PromptForInteger("How much would you like to withdraw from your savings? ");
@@ -110,8 +110,8 @@ namespace FirstBankOfSuncoast
                     Console.WriteLine("Which account would you like to deposit to:");
                     Console.WriteLine("[C]hecking");
                     Console.WriteLine("[S]avings");
-                    var checkingOrSavings = Console.ReadLine().ToUpper();
-                    if (checkingOrSavings == "C")
+                    var userInput = Console.ReadLine().ToUpper();
+                    if (userInput == "C")
                     {
                         transaction.Account = "Checking";
                         Console.WriteLine();
@@ -120,7 +120,7 @@ namespace FirstBankOfSuncoast
                         transactions.Add(transaction);
                     }
                     else
-                    if (checkingOrSavings == "S")
+                    if (userInput == "S")
                     {
                         transaction.Account = "Savings";
                         Console.WriteLine();
@@ -141,8 +141,8 @@ namespace FirstBankOfSuncoast
                     Console.WriteLine("[C]hecking");
                     Console.WriteLine("[S]avings");
                     Console.WriteLine("[T]ransfers");
-                    var checkingOrSavings = Console.ReadLine().ToUpper();
-                    if (checkingOrSavings == "C")
+                    var userInput = Console.ReadLine().ToUpper();
+                    if (userInput == "C")
                     {
 
                         var checkingTransactions = transactions.Where(transaction => transaction.Account == "Checking");
@@ -153,7 +153,7 @@ namespace FirstBankOfSuncoast
                         }
                     }
                     else
-                    if (checkingOrSavings == "S")
+                    if (userInput == "S")
                     {
                         var savingsTransactions = transactions.Where(transaction => transaction.Account == "Savings");
                         foreach (var savingsTransaction in savingsTransactions)
@@ -163,7 +163,7 @@ namespace FirstBankOfSuncoast
                         }
                     }
                     else
-                    if (checkingOrSavings == "T")
+                    if (userInput == "T")
                     {
                         var savingsTransactions = transactions.Where(transaction => transaction.Type == "Transfer");
                         foreach (var savingsTransaction in savingsTransactions)
@@ -185,8 +185,8 @@ namespace FirstBankOfSuncoast
                     Console.WriteLine("Which account would you like to see the balance of:");
                     Console.WriteLine("[C]hecking");
                     Console.WriteLine("[S]avings");
-                    var checkingOrSavings = Console.ReadLine().ToUpper();
-                    if (checkingOrSavings == "C")
+                    var userInput = Console.ReadLine().ToUpper();
+                    if (userInput == "C")
                     {
                         var checkingBalance = 0;
                         foreach (var transaction in transactions)
@@ -203,7 +203,7 @@ namespace FirstBankOfSuncoast
                         Console.WriteLine($"Checking balance is {checkingBalance}");
                     }
                     else
-                    if (checkingOrSavings == "S")
+                    if (userInput == "S")
                     {
                         var savingsBalance = 0;
                         foreach (var transaction in transactions)
@@ -234,13 +234,13 @@ namespace FirstBankOfSuncoast
                     Console.WriteLine("Which account would you like to transfer from:");
                     Console.WriteLine("[C]hecking");
                     Console.WriteLine("[S]avings");
-                    var checkingOrSavings = Console.ReadLine().ToUpper();
-                    if (checkingOrSavings == "C")
+                    var userInput = Console.ReadLine().ToUpper();
+                    if (userInput == "C")
                     {
 
                     }
                     else
-                    if (checkingOrSavings == "S")
+                    if (userInput == "S")
                     {
 
                     }
